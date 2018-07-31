@@ -1,4 +1,4 @@
-let Database = require("./ContactCollection");
+let database = require("./ContactCollection");
 let contactList = require("./ContactList");
 
 let form = document.getElementById("form");
@@ -13,7 +13,7 @@ function addContact(event){
         address: document.getElementById("address").value
     };
     contactForm.reset();
-    Database.addContact(customer);
+    database.addContact(customer);
     contactList();
 }
 
@@ -31,11 +31,11 @@ function populateForm(){
         <label>Address
             <input id="address" type="text"/>
         </label>
-        <button id="addContact">Add Contact</button>
+        <button id="add-contact">Add Contact</button>
     </form>
     `;
     contactForm = document.getElementById("contact-form");
-    document.getElementById("addContact").addEventListener("click", addContact);
+    document.getElementById("add-contact").addEventListener("click", addContact);
 }
 
 module.exports = populateForm;

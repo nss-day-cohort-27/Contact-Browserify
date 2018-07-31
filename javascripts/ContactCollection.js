@@ -1,14 +1,27 @@
 "use strict";
 
-let Database = Object.create(null, {
+let database = Object.create(null, {
+    init: {
+        value: function(){
+            this.getDatabase();
+        }
+    },
+    contacts: {
+        value: []
+    },
     addContact: {
         value: function(newContact){
-            let databse = this.getContacts();
-            databse.push(newContact);
-            this.setContacts(databse);
+            let database = this.getContacts();
+            database.push(newContact);
+            this.setContacts(database);
         }
     },
     getContacts: {
+        value: function(){
+            return this.contacts;
+        }
+    },
+    getDatabase: {
         value: function(){
             return JSON.parse(localStorage.getItem("contacts")) || [];
         }
@@ -16,9 +29,10 @@ let Database = Object.create(null, {
     setContacts: {
         value: function(contacts){
             localStorage.setItem("contacts", JSON.stringify(contacts));
+            this.contacts = this.getDatabase();
         }
     }
 });
 
 
-module.exports = Database;
+module.exports = database;
