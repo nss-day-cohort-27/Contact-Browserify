@@ -1,5 +1,5 @@
 let createContact = require("./Contact");
-let getContacts = require("./ContactCollection");
+let Database = require("./ContactCollection");
 
 //1. get contacts from LS (which is in our other module)
 //2. iterate over them
@@ -7,14 +7,15 @@ let getContacts = require("./ContactCollection");
 //3. render them to the DOM
 
 function listContacts(){
-    getContacts().forEach(contact => {
+    document.querySelector("#contactList").innerHTML = "";
+    Database.getContacts().forEach(contact => {
         let contactComponent = createContact(contact.name, contact.phone, contact.address);
-        writeContactToDOM(contactComponent);
+        writeContactsToDOM(contactComponent);
     });
 }
 
 
-function writeContactToDOM(contact){
+function writeContactsToDOM(contact){
     document.querySelector("#contactList").innerHTML += contact;
 }
 
