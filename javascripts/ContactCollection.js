@@ -7,7 +7,8 @@ let database = Object.create(null, {
         }
     },
     contacts: {
-        value: []
+        value: [],
+        writable:true
     },
     addContact: {
         value: function(newContact){
