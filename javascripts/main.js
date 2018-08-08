@@ -1,6 +1,7 @@
 "use strict";
 
-let contactForm = require("./ContactForm");
+let populateForm = require("./ContactForm");
 let listContacts = require("./ContactList");
 
+populateForm();
 listContacts();
